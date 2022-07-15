@@ -30,7 +30,7 @@ select
     ,previous_discharge_disposition_code
     ,discharge_disposition_code
 from master_claim_id
-where isnull(previous_claim, 'start') <> claim_id_a
+where ifnull(previous_claim, 'start') <> claim_id_a
 
 union all 
 

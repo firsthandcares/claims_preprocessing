@@ -145,13 +145,13 @@ with encounter_crosswalk as(
     ,bill_type_code
     ,revenue_center_code
     ,place_of_service_code
-from {{ var('medical_claim')}}
-where ISNULL(revenue_center_code,'') <> '0001'
+from {{ source ('input_claims', 'TUVA_INPUT_CLAIMS')}}
+where IFNULL(revenue_center_code,'') <> '0001'
 ) 
   
   select
     claim_type
-  	,md5(claim_id+encounter_type) as merge_claim_id
+  	,concat(claim_id,encounter_type) as merge_claim_id
     ,claim_id as original_claim_id
     ,claim_line_number
     ,patient_id
