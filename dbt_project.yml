@@ -7,9 +7,9 @@ config-version: 2
 profile: 'default'
 
 vars:
-    source_database: tuva         # configuration required (name of the database where your data is stored)
-    source_schema: core      # configuration required (name of the schema where you created staging tables)
-    source_name: core        # configuration required (name of your source dataset e.g. cms_claims)
+    source_database: TRANSFORMED_DATA         # configuration required (name of the database where your data is stored)
+    source_schema: dbt_vrachakonda_base      # configuration required (name of the schema where you created staging tables)
+    source_name: input_claims        # configuration required (name of your source dataset e.g. cms_claims)
 
     medical_claim: "{{ source(var('source_name'),'medical_claim') }}"
 
@@ -36,8 +36,3 @@ models:
   claims_preprocessing:
       +materialized: table
       +schema: claims_preprocessing
-seeds:
-  claims_preprocessing:
-    +database: tuva         
-    +schema: terminology
-    +tags: terminology
