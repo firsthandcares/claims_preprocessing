@@ -4,6 +4,7 @@ models:
     - name: coverage
       description: Coverage details
       config:
+        database: "{{ var('output_database')}}"
         schema: "{{ var('output_schema')}}"
       tests:
          - unique:

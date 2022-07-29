@@ -4,6 +4,7 @@ models:
     - name: patient
       description: Unique list of patients and demographics
       config:
+        database: "{{ var('output_database')}}"
         schema: "{{ var('output_schema')}}"
       columns:
         - name: patient_id

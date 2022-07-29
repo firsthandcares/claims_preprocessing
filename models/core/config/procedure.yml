@@ -4,6 +4,7 @@ models:
     - name: procedure
       description: Procedure list
       config:
+        database: "{{ var('output_database')}}"
         schema: "{{ var('output_schema')}}"
       tests:
          - unique:

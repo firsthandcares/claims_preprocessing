@@ -4,6 +4,7 @@ models:
     - name: inst_merge_final
       description: Encounter details
       config:
+        database: "{{ var('output_database')}}"
         schema: "{{ var('output_schema')}}"
       tests:
          - unique:

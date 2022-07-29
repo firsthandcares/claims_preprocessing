@@ -5,6 +5,7 @@ models:
       description: Mapping of institutional and profession claims at the claim line level to an encounter type
         Institutional claims require bill type and reveue codes.  Professional claims require place of service codes.
       config:
+        database: "{{ var('output_database')}}"
         schema: "{{ var('output_schema')}}"
       tests:
         - unique:

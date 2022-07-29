@@ -4,6 +4,7 @@ models:
     - name: member_month
       description: Beneficiary enrollment at the member month grain
       config:
+        database: "{{ var('output_database')}}"
         schema: "{{ var('output_schema')}}"
       tests:
          - unique:
