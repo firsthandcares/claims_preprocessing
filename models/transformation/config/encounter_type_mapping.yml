@@ -5,11 +5,15 @@ models:
       description: Mapping of institutional and profession claims at the claim line level to an encounter type
         Institutional claims require bill type and reveue codes.  Professional claims require place of service codes.
       config:
-        schema: "{{ var('source_name')}}_{{ var('output_schema')}}"
+        schema: "{{ var('output_schema')}}"
       tests:
         - unique:
             column_name: "(merge_claim_id || '-' || claim_line_number)"
       columns:
+        - name: claim_line_number
+          description:  Number of the claim line
+          tests:
+            - not_null
         - name: claim_type
           description:  Overarching claim type.  Valid values are I, P, and DME (institution, profession, and durable medical equipment).
           tests:
