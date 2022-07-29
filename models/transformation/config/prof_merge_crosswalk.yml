@@ -4,4 +4,5 @@ models:
     - name: prof_merge_crosswalk
       description: List of institutional claims pairs that are eligable for merging.
       config:
+        database: "{{ var('output_database')}}"
         schema: "{{ var('output_schema')}}"

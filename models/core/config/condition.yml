@@ -4,6 +4,7 @@ models:
     - name: condition
       description: Diagnosis list
       config:
+        database: "{{ var('output_database')}}"
         schema: "{{ var('output_schema')}}"
       tests:
          - unique:
