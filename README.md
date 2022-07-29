@@ -44,6 +44,14 @@ Complete the following steps to configure the package to run in your environment
     - Update table name in medical_claim and eligibility jinja function
 5. Execute `dbt build` to load seed files, run models, and perform tests.
 
+## Usage Example
+Sample dbt command specifying new variable names dynamically:
+
+```
+dbt build --vars '{input_database: extract_from_database, input_schema: extract_from_schema, output_database: insert_into_database, output_schema: insert_into_schema}'
+```
+
+
 ## Contributions
 Have an opinion on the mappings? Notice any bugs when installing and running the package? 
 If so, we highly encourage and welcome contributions! 

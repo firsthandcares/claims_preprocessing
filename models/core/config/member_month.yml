@@ -4,10 +4,10 @@ models:
     - name: member_month
       description: Beneficiary enrollment at the member month grain
       config:
-        schema: "{{ var('source_name')}}_{{ var('output_schema')}}"
+        schema: "{{ var('output_schema')}}"
       tests:
          - unique:
-             column_name: "(patient_id || '-' || month || '-' || year)"
+             column_name: "(patient_id || '-' || month || '-' || year || '-' || payer)"
       columns:
         - name: patient_id
           description: Member unique identifier

@@ -1,11 +1,17 @@
--------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
 -- Author       Thu Xuan Vu
 -- Created      June 2022
 -- Purpose      Populate encounter level details.
--------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
 -- Modification History
 --
--------------------------------------------------------------------------------
+-- 07/2022  Thu Xuan Vu
+--      Changing acute inpatient mapping of professional claims to 'professional only acute inpatient'
+--        Downstream, a acute inpatient prof claim will link to an inst claim and the encounter type
+--        will be pulled from the inst claim.  But if a prof acute patient claim has no corresponding
+--        inst claim it's important to seperate out these orphaned prof claims to not over count 
+--        inpatient visits.
+-----------------------------------------------------------------------------------------------------
 
 with encounter_combined as(
   select 
@@ -22,7 +28,11 @@ with encounter_combined as(
   select
     mc.encounter_id
     ,mc.patient_id
-    ,mc.encounter_type
+    ,case 
+        when mc.encounter_type = 'acute inpatient' 
+            then 'professional only acute inpatient'
+                else mc.encounter_type
+    end as encounter_type
     ,mc.admit_source_code
     ,mc.admit_source_description
     ,mc.admit_type_code

@@ -4,7 +4,7 @@ models:
     - name: encounter_inst_stage
       description: Encounter level data elements for institutional claims
       config:
-        schema: "{{ var('source_name')}}_{{ var('output_schema')}}"
+        schema: "{{ var('output_schema')}}"
       columns:
         - name: encounter_id
           description: Unique identifier
