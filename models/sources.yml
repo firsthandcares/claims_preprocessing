@@ -6,4 +6,6 @@ sources:
     schema:  "{{ var('input_schema') }}"
     tables:
       - name: medical_claim
+        identifier: tuva_input_claims
       - name: eligibility
+        identifier: tuva_input_eligibility
